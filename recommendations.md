@@ -1,0 +1,73 @@
+<a href="#weakHash"># Disallow Weak Hash</a> 
+Jangan gunakan hash MD5 atau SHA1 (mudah di-crack!), terutama terkait password.
+
+<a href="#weakValidation"># Detect Weak Validation</a>
+Contoh validasi yang lemah:
+$this->validate($request, [
+    'name' => 'required',
+    'username' => 'required',
+    'email' => 'required',
+    'password' => 'required',
+    'gambar' => 'required',
+]);
+
+Contoh validasi input yang lebih aman/baik:
+$this->validate($request, [
+     'name' => 'required|string|max:255',
+     'username' => 'required|string|max:20|unique:users',
+     'email' => 'required|string|email|max:255|unique:users',
+     'password' => 'required|string|min:8|confirmed',
+     // atau lebih ketat lagi
+        'password' => [
+                'required',
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
+            'password_confirmation' => 'required|same:password'
+     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+ ]);
+
+<a href="#detectUpload"># Detect Upload File/Image Process</a>
+Sebaiknya ada proses rename file, batasi ukuran file, batasi extensi yang boleh di-upload.
+
+<a href="#rawQuery"># Disallow Raw SQL Query</a>
+Dalam dokumentasi Laravel, dinyatakan bahwa penggunaan syntax raw SQL adalah tidak aman. Silakan baca di https://laravel.com/docs/10.x/queries#raw-expressions
+
+<a href="#readOnly"># Detect Read-only</a>
+Logika read-only di blade untuk mematikan suatu fungsi/link/button akan bisa dihack dengan inspect element. Letakkan bagian logic di controller, bukan di blade.
+
+<a href="#logicBlade"># Detect Logic in Blade File</a>
+Letakkan bagian logic di controller, bukan di blade.
+
+<a href="#unencryptedID"># Detect Un-encrypted ID in Blade File</a>
+Contoh pemanggilan ID yang polos/kurang rahasia di file blade:
+<a class="dropdown-item" href="{{route('anggota.edit', $data->id)}}"> Edit </a>
+
+Cara yang lebih baik:
+<a class="dropdown-item" href="{{route('anggota.edit', <b>Crypt::encrypt($data->id)</b>)}}"> Edit </a>
+
+Contoh pemrosesan ID (polos) di controller: 
+public function edit($id)
+{   
+  if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+    Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+    return redirect()->to('/');
+}
+$data = Anggota::findOrFail($id);
+
+Cara yang lebih baik (jika di blade, anda melakukan enkripsi ID):
+public function edit($id)
+{   
+  <b>$id = Crypt::decrypt($id);</b>
+  if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
+    Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
+    return redirect()->to('/');
+}
+$data = Anggota::findOrFail($id);
+
+<a href="#unescaped"># Disallow Un-escaped Syntax</a>
+Gunakan {{ ... }} daripada {!! ... !!}
