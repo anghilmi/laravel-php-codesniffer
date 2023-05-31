@@ -247,7 +247,7 @@ export class DiagnosticUpdater extends WorkerService {
 			);
 			action.diagnostics = [diagnostic];
 			action.command = {
-				title: 'Ignore PHP_CodeSniffer',
+				title: 'Ignore Laravel PHP_CodeSniffer',
 				command: IgnoreLineCommand.COMMAND,
 				arguments: [
 					document,

@@ -1,16 +1,16 @@
 {
-  "name": "vscode-php-codesniffer",
-  "displayName": "PHP_CodeSniffer",
-  "description": "Brings PHPCS support to VS Code.",
-  "version": "2.1.0",
+  "name": "laravel-php-codesniffer",
+  "displayName": "Laravel PHP_CodeSniffer",
+  "description": "Help you detect security smell on Laravel based web project",
+  "version": "1.1.0",
   "license": "GPL-2.0-or-later",
-  "author": "Christopher Allford",
+  "author": "Muh. Anis Al Hilmi",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ObliviousHarmony/vscode-php-codesniffer.git"
+    "url": "https://github.com/anghilmi/laravel-php-codesniffer.git"
   },
-  "publisher": "obliviousharmony",
-  "icon": "assets/icon.png",
+  "publisher": "anghilmi",
+  "icon": "assets/icon_new.png",
   "galleryBanner": {
     "color": "#B0B3D6",
     "theme": "dark"
@@ -22,6 +22,8 @@
   "keywords": [
     "php",
     "linter",
+    "Laravel",
+    "security",
     "fixer",
     "phpcs",
     "phpcbf"
@@ -38,7 +40,7 @@
   ],
   "contributes": {
     "configuration": {
-      "title": "PHP_CodeSniffer",
+      "title": "Laravel PHP_CodeSniffer",
       "properties": {
         "phpCodeSniffer.autoExecutable": {
           "type": "boolean",
@@ -92,7 +94,7 @@
         "phpCodeSniffer.standard": {
           "type": "string",
           "description": "The coding standard that should be used by PHPCS.",
-          "default": "Disabled",
+          "default": "Custom",
           "enum": [
             "Disabled",
             "Default",
@@ -105,7 +107,7 @@
             "Custom"
           ],
           "enumDescriptions": [
-            "Disables the PHP_CodeSniffer extension's linting.",
+            "Disables the Laravel PHP_CodeSniffer extension's linting.",
             "Allows PHPCS to decide the coding standard.",
             "Searches for a coding standard configuration file in the current document's folder and parent directories.",
             "Uses the PEAR coding standard.",
@@ -120,7 +122,7 @@
         "phpCodeSniffer.standardCustom": {
           "type": "string",
           "markdownDescription": "The custom coding standard to use if `#phpCodeSniffer.standard#` is set to 'Custom'.",
-          "default": "",
+          "default": "laravel_security_sniffer",
           "scope": "window"
         },
         "phpCodeSniffer.executable": {
@@ -145,7 +147,7 @@
     "commands": [
       {
         "command": "phpCodeSniffer.cancelProcessing",
-        "title": "PHP_CodeSniffer: Cancel Processing"
+        "title": "Laravel PHP_CodeSniffer: Cancel Processing"
       }
     ]
   },

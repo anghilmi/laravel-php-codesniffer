@@ -70,7 +70,7 @@ export class LinterStatus implements Disposable {
 		this.statusBar.show();
 
 		// Update the status to indicate the number of documents we're procesing.
-		let status = '$(sync~spin) PHP_CodeSniffer Processing ';
+		let status = '$(sync~spin) Laravel PHP_CodeSniffer Processing ';
 		if (this.activeDocuments.size > 1) {
 			status += this.activeDocuments.size + ' documents...';
 		} else {
