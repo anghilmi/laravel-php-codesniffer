@@ -23,11 +23,23 @@ composer global require "squizlabs/php_codesniffer=*" && cd %userprofile%\Downlo
 
 ## For VSCode Extension Developer 
 Build extension: 
-1. cd /to/project/path
-2. npm install
-3. Windows Powershell >> run as administrator
-4. Get-ExecutionPolicy
-5. Set-ExecutionPolicy Unrestricted
-5. a
-6. vsce package
-7. get VSIX file
+```
+cd /to/project/path
+```
+```
+npm install
+```
+Windows Powershell >> run as administrator
+```
+Get-ExecutionPolicy
+```
+```
+Set-ExecutionPolicy Unrestricted
+```
+```
+a
+```
+```
+vsce package
+```
+output: *.VSIX file
