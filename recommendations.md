@@ -1,9 +1,9 @@
 ## Disallow Weak Hash
-Jangan gunakan hash MD5 atau SHA1 (mudah di-crack!), terutama terkait password.
+Jangan gunakan hash MD5 atau SHA1 (***mudah di-crack!***), terutama terkait password.
 
 ## Detect Weak Validation
 Contoh validasi yang lemah:
-```
+```php
 $this->validate($request, [
     'name' => 'required',
     'username' => 'required',
@@ -14,7 +14,7 @@ $this->validate($request, [
 ```
 
 Contoh validasi input yang lebih aman/baik:
-```
+```php
 $this->validate($request, [
      'name' => 'required|string|max:255',
      'username' => 'required|string|max:20|unique:users',
@@ -48,17 +48,17 @@ Letakkan bagian logic di controller, bukan di blade.
 
 ## Detect Un-encrypted ID in Blade File
 Contoh pemanggilan ID yang polos/kurang rahasia di file blade:
-```
+```php
 <a class="dropdown-item" href="{{route('anggota.edit', $data->id)}}"> Edit </a>
 ```
 
 Cara yang lebih baik:
-```
+```php
 <a class="dropdown-item" href="{{route('anggota.edit', Crypt::encrypt($data->id))}}"> Edit </a>
 ```
 
 Contoh pemrosesan ID (polos) di controller: 
-```
+```php
 public function edit($id)
 {   
   if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
@@ -69,7 +69,7 @@ $data = Anggota::findOrFail($id);
 ```
 
 Cara yang lebih baik (jika di blade, anda melakukan enkripsi ID):
-```
+```php
 public function edit($id)
 {   
   <b>$id = Crypt::decrypt($id);</b>
