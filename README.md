@@ -1,5 +1,5 @@
 ## Purpose
-Help you do secure coding; detect security smell; prevent vulnerability from SDLC phase
+Help you do secure coding; detect security smell; prevent vulnerability from SDLC phase. It works only on Windows OS as for now.
 
 ## For User (after install the extension, you need to install the rules!)
 Installation/Update rules:
