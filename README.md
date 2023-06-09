@@ -12,13 +12,13 @@ Installation/Update rules:
 
 ## Demo
 ### Detect weak input validation
-![](https://github.com/anghilmi/laravel-php-codesniffer/blob/main/assets/validate.gif)
+![](https://raw.githubusercontent.com/anghilmi/laravel-php-codesniffer/main/assets//validate.gif)
 
 ### Detect obsolete hash
-![](https://github.com/anghilmi/laravel-php-codesniffer/blob/main/assets/md5.gif)
+![](https://raw.githubusercontent.com/anghilmi/laravel-php-codesniffer/main/assets//md5.gif)
 
 ### Detect raw id link
-![](https://github.com/anghilmi/laravel-php-codesniffer/blob/main/assets/dataid.gif)
+![](https://raw.githubusercontent.com/anghilmi/laravel-php-codesniffer/main/assets//dataid.gif)
 
 
 ## For VSCode Extension Developer 

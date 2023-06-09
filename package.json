@@ -2,7 +2,7 @@
   "name": "laravel-php-codesniffer",
   "displayName": "Laravel PHP_CodeSniffer",
   "description": "Help you detect security smell on Laravel based web project",
-  "version": "1.1.0",
+  "version": "1.1.3",
   "license": "GPL-2.0-or-later",
   "author": "Muh. Anis Al Hilmi",
   "repository": {
@@ -10,7 +10,7 @@
     "url": "https://github.com/anghilmi/laravel-php-codesniffer.git"
   },
   "publisher": "MuhAnisAlHilmi",
-  "icon": "assets/icon_new.png",
+  "icon": "assets/icon_new2.png",
   "galleryBanner": {
     "color": "#B0B3D6",
     "theme": "dark"
