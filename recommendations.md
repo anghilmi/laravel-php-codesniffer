@@ -72,7 +72,7 @@ Cara yang lebih baik (jika di blade, anda melakukan enkripsi ID):
 ```php
 public function edit($id)
 {   
-  <b>$id = Crypt::decrypt($id);</b>
+  $id = Crypt::decrypt($id);
   if((Auth::user()->level == 'user') && (Auth::user()->id != $id)) {
     Alert::info('Oopss..', 'Anda dilarang masuk ke area ini.');
     return redirect()->to('/');
